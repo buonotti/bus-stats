@@ -2,5 +2,7 @@
 npm run build
 git add dist -f
 git commit -m 'deploy'
-git pull
-git subtree push --prefix dist origin gh-pages
+git subtree split --prefix dist main
+
+# Then run the following command with the resulting hash
+# git push origin <id>:gh-pages --force

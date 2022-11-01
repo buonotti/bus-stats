@@ -13,10 +13,10 @@ const isDark = useDark({
 <template class="">
   <div class="sticky navbar bg-base-100 shadow-lg top-0 z-50">
     <div class="navbar-start">
-        <router-link to="/" class="text-homepage-l flex flex-nowrap mt-2 mb-2 ml-24 items-center text-3xl capitalize btn btn-outline">Home<font-awesome-icon icon="home" class="ml-3"></font-awesome-icon></router-link>
-        <router-link to="/lines" class="text-homepage-l flex flex-nowrap mt-2 mb-2 ml-5 items-center text-3xl capitalize btn btn-outline">Lines<font-awesome-icon icon="bus" class="ml-3"></font-awesome-icon></router-link>
-        <router-link to="/contact" class="text-homepage-l flex flex-nowrap mt-2 mb-2 ml-5 items-center text-3xl capitalize btn btn-outline">Contact<font-awesome-icon icon="envelope" class="ml-3"></font-awesome-icon></router-link>
-        <router-link to="/about" class="text-homepage-l flex flex-nowrap mt-2 mb-2 ml-5 items-center text-3xl capitalize btn btn-outline">About<font-awesome-icon icon="circle-info" class="ml-3"></font-awesome-icon></router-link>
+        <router-link to="/bus-stats" class="text-homepage-l flex flex-nowrap mt-2 mb-2 ml-24 items-center text-3xl capitalize btn btn-outline">Home<font-awesome-icon icon="home" class="ml-3"></font-awesome-icon></router-link>
+        <router-link to="/bus-stats/lines" class="text-homepage-l flex flex-nowrap mt-2 mb-2 ml-5 items-center text-3xl capitalize btn btn-outline">Lines<font-awesome-icon icon="bus" class="ml-3"></font-awesome-icon></router-link>
+        <router-link to="/bus-stats/contact" class="text-homepage-l flex flex-nowrap mt-2 mb-2 ml-5 items-center text-3xl capitalize btn btn-outline">Contact<font-awesome-icon icon="envelope" class="ml-3"></font-awesome-icon></router-link>
+        <router-link to="/bus-stats/about" class="text-homepage-l flex flex-nowrap mt-2 mb-2 ml-5 items-center text-3xl capitalize btn btn-outline">About<font-awesome-icon icon="circle-info" class="ml-3"></font-awesome-icon></router-link>
     </div>
     <div class="navbar-center">
     </div>
@@ -46,14 +46,19 @@ const isDark = useDark({
           </label>
           <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
             <li>
-              <router-link class="justify-between" to="/register">
+              <router-link class="justify-between" to="/bus-stats/register">
                 Register
               </router-link>
             </li>
             <li>
-              <router-link class="justify-between" to="/login">
+              <router-link class="justify-between" to="/bus-stats/login">
                 Login
               </router-link>
+            </li>
+            <li>
+              <button class="justify-between">
+                Profile picture
+              </button>
             </li>
           </ul>
         </div>

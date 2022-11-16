@@ -13,8 +13,8 @@ module.exports = {
             {
                 bus_stats_dark: {
                     "primary": "#ff9100",
-                    "secondary": "#ff9100",
-                    "accent": "#fca23b",
+                    "secondary": "#ffb15e",
+                    "accent": "#ffffff",
                     "neutral": "#191D24",
                     "base-100": "#36383f",
                     "info": "#3ABFF8",
@@ -24,8 +24,8 @@ module.exports = {
                 },
                 bus_stats_light: {
                     "primary": "#ff9100",
-                    "secondary": "#ff9100",
-                    "accent": "#fca23b",
+                    "secondary": "#ffb15e",
+                    "accent": "#36383f",
                     "neutral": "#191D24",
                     "base-100": "#ffffff",
                     "info": "#3ABFF8",

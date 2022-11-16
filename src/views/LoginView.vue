@@ -2,13 +2,16 @@
 
 import {ref} from "vue";
 import axios, {AxiosResponse} from "axios";
-import ErrorMsg from "../components/ErrorMsg.vue";
-import errorMsg from "../components/ErrorMsg.vue";
+import {useAuthenticationStore} from "../plugins/store";
+import {useRouter} from "vue-router";
 
+const errorMsg = ref("")
 const email = ref("")
 const password = ref("")
-const passwordRepeat = ref("")
+const passwordHash = ref("")
 const modalOpen = ref(false)
+const authStore = useAuthenticationStore()
+const router = useRouter()
 
 async function sha256(message: string) {
   const msgBuffer = new TextEncoder().encode(message)
@@ -17,13 +20,28 @@ async function sha256(message: string) {
   return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-async function registerUser() {
+async function loginUser() {
+
+  passwordHash.value = await sha256(password.value);
   const user = {
     email: email.value,
-    password: password.value
+    password: passwordHash.value
   }
+  let response: AxiosResponse<any, any> | null = null
 
-  //TODO: call login endpoint
+  try {
+    response = await axios.post("http://localhost:8080/api/v1/login", user)
+    console.log(response, user)
+    authStore.login(user.email)
+    authStore.saveLoginData(response?.data.token, response?.data.uid)
+    await router.push("/bus-stats")
+  } catch (e: any) {
+    console.log(response?.status)
+    modalOpen.value = true
+    errorMsg.value = "Password or email are invalid!"
+  } finally {
+    console.log(response?.status)
+  }
 }
 
 </script>
@@ -31,24 +49,32 @@ async function registerUser() {
   <div>
     <VueFinalModal v-model="modalOpen" name="example" classes="modal-container" content-class="modal-content">
       <div class="modal__content">
-        <error-msg></error-msg>
+        {{errorMsg}}
       </div>
     </VueFinalModal>
   </div>
   <div id="warning"></div>
-  <div class="card w-1/3 bg-base-100 shadow-xl align-center">
-    <div class="card-body items-center text-center">
-      <h1 class="title-l">Login</h1>
-      <div>
-        <input type="email" placeholder="E-Mail" class="text-l input input-bordered border-2 input-primary w-full mb-5"
-               v-model="email"/>
-        <input type="password" placeholder="Password"
-               class="text-l input input-bordered border-2 input-primary w-full mb-5"
-               v-model="password"/>
+  <div v-motion-slide-top>
+    <div class="card w-1/3 cardDisplay bg-base-100 shadow-xl align-center">
+      <div class="card-body items-center text-center">
+        <h1 class="title-l">Login</h1>
+        <div>
+          <input type="email" placeholder="E-Mail"
+                 class="text-l input input-bordered border-2 input-primary w-full mb-5"
+                 v-model="email"/>
+          <input type="password" placeholder="Password"
+                 class="text-l input input-bordered border-2 input-primary w-full mb-5"
+                 v-model="password"/>
+        </div>
       </div>
-    </div>
-    <div class="card-actions justify-end mb-5">
-      <button class="text-l btn-main btn-wide align-center" @click.prevent="registerUser">Submit</button>
+      <div class="card-actions justify-end mb-5">
+        <button class="text-l btn-main btn-wide align-center" @click.prevent="loginUser">Submit</button>
+      </div>
+      <div class="card-actions justify-center mb-5">
+        <router-link to="/bus-stats/register" class="text-primary hover: cursor-pointer"
+                     style="font-family: 'Berlin Sans FB', sans-serif; text-decoration-line: underline">Register instead
+        </router-link>
+      </div>
     </div>
   </div>
   <div class="h-[600px] w-[300px] select-none align-top-left">

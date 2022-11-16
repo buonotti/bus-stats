@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import {useDark} from "@vueuse/core";
+import {useAuthenticationStore} from "./plugins/store";
 
 const isDark = useDark({
   attribute: "data-theme",
@@ -8,6 +9,9 @@ const isDark = useDark({
   valueDark: "bus_stats_dark",
   valueLight: "bus_stats_light"
 })
+
+const authStore = useAuthenticationStore()
+
 </script>
 
 <template class="">
@@ -23,7 +27,7 @@ const isDark = useDark({
     <div class="navbar-end">
       <!-- HELP-MODE BUTTON -->
       <div class="flex-none">
-        <div class="dropdown dropdown-end">
+        <div class="dropdown dropdown-end m-1">
           <label tabindex="0" class="text-3xl btn btn-ghost btn-circle avatar">
             <font-awesome-icon icon="circle-question"></font-awesome-icon>
           </label>
@@ -31,16 +35,20 @@ const isDark = useDark({
       </div>
       <!-- DARK-MODE BUTTON -->
       <div class="flex-none">
-        <div class="dropdown dropdown-end">
+        <div class="dropdown dropdown-end m-1">
           <label tabindex="0" class="text-3xl btn btn-ghost btn-circle avatar">
             <font-awesome-icon icon="circle-half-stroke" @click="isDark = !isDark"></font-awesome-icon>
           </label>
         </div>
       </div>
+      <!-- NAME DISPLAY -->
+      <div v-motion-slide-right class="flex-none m-1" v-if="authStore.isLoggedIn">
+        <span class="badge text-m p-4 text-primary border-2 border-accent bg-base-100 border-base-100" style="font-family: 'Berlin Sans FB', sans-serif;">{{authStore.username}}</span>
+      </div>
       <!-- PROFILE BUTTON -->
       <div class="flex-none">
-        <div class="dropdown dropdown-end">
-          <label tabindex="0" class="text-3xl btn btn-ghost btn-circle avatar">
+        <div class="dropdown dropdown-end m-1">
+          <label tabindex="0" class="text-3xl btn btn-ghost btn-circle avatar ">
             <!-- TODO Set icon to PFP-->
             <font-awesome-icon icon="user"></font-awesome-icon>
           </label>
@@ -51,14 +59,17 @@ const isDark = useDark({
               </router-link>
             </li>
             <li>
-              <router-link class="justify-between" to="/bus-stats/login">
+              <router-link class="justify-between" to="/bus-stats/login" v-if="!authStore.isLoggedIn">
                 Login
               </router-link>
+              <button class="justify-between" @click="authStore.logout" v-else>
+                Logout
+              </button>
             </li>
             <li>
-              <button class="justify-between">
-                Profile picture
-              </button>
+              <router-link class="justify-between" to="/bus-stats/profile">
+                Profile
+              </router-link>
             </li>
           </ul>
         </div>

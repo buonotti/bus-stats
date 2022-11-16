@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" >
 import {onMounted, ref} from "vue";
 import axios from 'axios'
 
@@ -25,9 +25,11 @@ Look up your route now to get
 informed on possible delays or
 cancellations.
     </pre>
-    <router-link to="/bus-stats/lines" class="text-homepage-l btn-main">get started
-      <font-awesome-icon icon="play" class="ml-2"></font-awesome-icon>
-    </router-link>
+    <div v-motion-slide-left>
+      <router-link to="/bus-stats/lines" class="text-homepage-l btn-main">get started
+        <font-awesome-icon icon="play" class="ml-2"></font-awesome-icon>
+      </router-link>
+    </div>
   </div>
   <div class="h-[750px] w-1/2 align-bottom-right select-none">
     <img src="../images/home_circle.png" class="h-full w-full" alt="">

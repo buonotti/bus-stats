@@ -1,9 +1,10 @@
 <script setup lang="ts">
 // @ts-ignore
 import * as events from "events";
-import {defineAsyncComponent, ref} from "vue";
-import {useAuthenticationStore} from "../plugins/store";
-import axios, {AxiosResponse} from "axios";
+import { defineAsyncComponent, ref } from "vue";
+import { useAuthenticationStore } from "../plugins/store";
+import axios, { AxiosResponse } from "axios";
+import { api } from "../plugins/api";
 
 const file = ref("")
 const uploadFile = ref("")
@@ -16,7 +17,7 @@ const AsyncProfileComponent = defineAsyncComponent({
   loader: () => import("../components/ProfilePictureAsync.vue")
 })
 
-function setImg(e: events) {
+function setImg(e: any) {
   hasImg.value = true
   file.value = URL.createObjectURL(e.target.files[0]);
   uploadFile.value = e.target.files[0]
@@ -29,7 +30,7 @@ async function sendImg() {
 
   try {
     console.log(authStore.id)
-    response = await axios.post("http://localhost:8080/api/v1/profile/" + authStore.id, bodyFormData, {
+    response = await axios.post(api("profile") + authStore.id, bodyFormData, {
       headers: {
         'Authorization': "Bearer " + authStore.token
       }
@@ -68,7 +69,7 @@ function encryptStr(str: string) {
             </div>
             <div class="avatar-upload">
               <div class="avatar-edit">
-                <input type='file' id="imageUpload" name="image" accept=".png, .jpg, .jpeg" @change="setImg"/>
+                <input type='file' id="imageUpload" name="image" accept=".png, .jpg, .jpeg" @change="setImg" />
                 <label for="imageUpload" class="text-3xl">
                   <font-awesome-icon icon="pen"></font-awesome-icon>
                 </label>
@@ -76,7 +77,7 @@ function encryptStr(str: string) {
               <div class="avatar-preview drop-shadow-2xl">
                 <div id="imagePreview" class="bg-base-100 text-9xl drop-shadow-2xl">
                   <Suspense>
-                    <AsyncProfileComponent :data-src="file"/>
+                    <AsyncProfileComponent :data-src="file" />
                     <template #fallback>
                       <font-awesome-icon icon="user" class="mt-7"></font-awesome-icon>
                     </template>
@@ -131,7 +132,7 @@ body {
   display: none;
 }
 
-.avatar-upload .avatar-edit input + label {
+.avatar-upload .avatar-edit input+label {
   display: inline-block;
   width: 34px;
   height: 34px;
@@ -143,7 +144,7 @@ body {
   transition: all .2s ease-in-out;
 }
 
-.avatar-upload .avatar-edit input + label:after {
+.avatar-upload .avatar-edit input+label:after {
   position: absolute;
   top: 10px;
   left: 0;
@@ -159,7 +160,7 @@ body {
   border-radius: 100%;
 }
 
-.avatar-upload .avatar-preview > div {
+.avatar-upload .avatar-preview>div {
   width: 100%;
   height: 100%;
   border-radius: 100%;

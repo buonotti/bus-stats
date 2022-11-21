@@ -1,8 +1,9 @@
 <script setup lang="ts">
 
-import {ref} from "vue";
-import axios, {AxiosResponse} from "axios";
-import {useRouter} from "vue-router";
+import { ref } from "vue";
+import axios, { AxiosResponse } from "axios";
+import { useRouter } from "vue-router";
+import { api } from "../plugins/api";
 
 const email = ref("")
 const password = ref("")
@@ -32,9 +33,9 @@ async function registerUser() {
     console.log(user.password)
 
     try {
-      response = await axios.post("http://localhost:8080/api/v1/register", user)
+      response = await axios.post(api("register"), user)
 
-      await router.push("/bus-stats/login")
+      await router.push("/login")
     } catch (e: any) {
       errorMsg.value = e.response.data.message
       modalOpen.value = true;
@@ -55,7 +56,7 @@ async function registerUser() {
   <div>
     <VueFinalModal v-model="modalOpen" name="example" classes="modal-container" content-class="modal-content">
       <div class="modal__content">
-        {{errorMsg}}
+        {{ errorMsg }}
       </div>
     </VueFinalModal>
   </div>
@@ -66,14 +67,11 @@ async function registerUser() {
         <h1 class="title-l">Register</h1>
         <div>
           <input type="email" placeholder="E-Mail"
-                 class="text-l input input-bordered border-2 input-primary w-full mb-5"
-                 v-model="email"/>
+            class="text-l input input-bordered border-2 input-primary w-full mb-5" v-model="email" />
           <input type="password" placeholder="Password"
-                 class="text-l input input-bordered border-2 input-primary w-full mb-5"
-                 v-model="password"/>
+            class="text-l input input-bordered border-2 input-primary w-full mb-5" v-model="password" />
           <input type="password" placeholder="Repeat password"
-                 class="text-l input input-bordered border-2 input-primary w-full mb-5"
-                 v-model="passwordRepeat"/>
+            class="text-l input input-bordered border-2 input-primary w-full mb-5" v-model="passwordRepeat" />
         </div>
       </div>
       <div class="card-actions justify-end mb-5">
@@ -81,7 +79,7 @@ async function registerUser() {
       </div>
       <div class="card-actions justify-center mb-5">
         <router-link to="/bus-stats/login" class="text-primary hover: cursor-pointer"
-                     style="font-family: 'Berlin Sans FB', sans-serif; text-decoration-line: underline">Already have an
+          style="font-family: 'Berlin Sans FB', sans-serif; text-decoration-line: underline">Already have an
           account? Login
         </router-link>
       </div>

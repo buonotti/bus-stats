@@ -26,7 +26,7 @@ informed on possible delays or
 cancellations.
     </pre>
     <div v-motion-slide-left>
-      <router-link to="/bus-stats/lines" class="text-homepage-l btn-main">get started
+      <router-link to="/lines" class="text-homepage-l btn-main">get started
         <font-awesome-icon icon="play" class="ml-2"></font-awesome-icon>
       </router-link>
     </div>

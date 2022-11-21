@@ -26,22 +26,22 @@ function convertEmail(email: string) {
   <div class="relative flex flex-wrap items-center justify-between">
     <div class="sticky navbar bg-base-100 shadow-lg top-0 z-50">
       <div class="navbar-start">
-        <router-link to="/bus-stats"
+        <router-link to="/"
                      class="text-homepage-l flex flex-nowrap mt-2 mb-2 ml-24 items-center text-3xl capitalize btn btn-outline hidden m:flex">
           <div class="hidden xl:flex">Home</div>
           <font-awesome-icon icon="home" class="xl:ml-3"></font-awesome-icon>
         </router-link>
-        <router-link to="/bus-stats/lines"
+        <router-link to="/lines"
                      class="text-homepage-l flex flex-nowrap mt-2 mb-2 ml-5 items-center text-3xl capitalize btn btn-outline hidden m:flex">
           <div class="hidden xl:flex">Lines</div>
           <font-awesome-icon icon="bus" class="xl:ml-3"></font-awesome-icon>
         </router-link>
-        <router-link to="/bus-stats/contact"
+        <router-link to="/contact"
                      class="text-homepage-l flex flex-nowrap mt-2 mb-2 ml-5 items-center text-3xl capitalize btn btn-outline hidden m:flex">
           <div class="hidden xl:flex">Contact</div>
           <font-awesome-icon icon="envelope" class="xl:ml-3"></font-awesome-icon>
         </router-link>
-        <router-link to="/bus-stats/about"
+        <router-link to="/about"
                      class="text-homepage-l flex flex-nowrap mt-2 mb-2 ml-5 items-center text-3xl capitalize btn btn-outline hidden m:flex">
           <div class="hidden xl:flex">About</div>
           <font-awesome-icon icon="circle-info" class="xl:ml-3"></font-awesome-icon>
@@ -97,12 +97,12 @@ function convertEmail(email: string) {
             </label>
             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
               <li>
-                <router-link class="justify-between" to="/bus-stats/register">
+                <router-link class="justify-between" to="/register">
                   Register
                 </router-link>
               </li>
               <li>
-                <router-link class="justify-between" to="/bus-stats/login" v-if="!authStore.isLoggedIn">
+                <router-link class="justify-between" to="/login" v-if="!authStore.isLoggedIn">
                   Login
                 </router-link>
                 <button class="justify-between" @click="authStore.logout" v-else>
@@ -110,7 +110,7 @@ function convertEmail(email: string) {
                 </button>
               </li>
               <li>
-                <router-link class="justify-between" to="/bus-stats/profile">
+                <router-link class="justify-between" to="/profile">
                   Profile
                 </router-link>
               </li>

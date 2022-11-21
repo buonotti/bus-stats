@@ -10,47 +10,48 @@ import {useAuthenticationStore} from "./store";
 
 const routes = [
     {
-        path: '/bus-stats',
+        path: '/',
         component: Home,
         meta: {
             requireAuth: false
         }
     },
     {
-        path: '/bus-stats/lines',
+        path: '/lines',
         component: Lines,
         meta: {
-            requireAuth: false}
+            requireAuth: false
+        }
     },
     {
-        path: '/bus-stats/contact',
+        path: '/contact',
         component: Contact,
         meta: {
             requireAuth: false
         }
     },
     {
-        path: '/bus-stats/about',
+        path: '/about',
         component: About,
         meta: {
             requireAuth: false
         }
     },
     {
-        path: '/bus-stats/register',
+        path: '/register',
         component: Register,
         meta: {
             requireAuth: false
         }
     },
     {
-        path: '/bus-stats/login',
+        path: '/login',
         component: Login, meta: {
             requireAuth: false
         }
     },
     {
-        path: '/bus-stats/profile',
+        path: '/profile',
         component: Profile,
         meta: {
             requireAuth: true
@@ -70,7 +71,7 @@ router.beforeEach((to, from, next) => {
         if (!authStore.isLoggedIn) {
             const q = to.fullPath.match(/^\/$/) ? {} : {redirect: to.fullPath}
             next({
-                path: "/bus-stats/login",
+                path: "/login",
                 query: q
             })
             return

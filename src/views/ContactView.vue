@@ -1,8 +1,5 @@
-<script>
+<script setup lang="ts">
 import ContactUs from "../components/ContactUs.vue";
-export default {
-  components: {ContactUs}
-}
 </script>
 
 <template>

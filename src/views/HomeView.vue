@@ -31,7 +31,7 @@ cancellations.
       </router-link>
     </div>
   </div>
-  <div class="h-[750px] w-1/2 align-bottom-right select-none">
+  <div class="h-[750px] w-1/2 align-bottom-right hidden 2xl:flex">
     <img src="../images/home_circle.png" class="h-full w-full" alt="">
   </div>
 </template>

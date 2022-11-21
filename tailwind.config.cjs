@@ -6,6 +6,14 @@ module.exports = {
     ],
     theme: {
         extend: {},
+        screens: {
+            's': '520px',
+            'm': '768px',
+            'ml': '875px',
+            'lg': '1024px',
+            'xl': '1280px',
+            '2xl': '1536px'
+        }
     },
     plugins: [require("daisyui")],
     daisyui: {

@@ -44,18 +44,18 @@ async function sendEmail() {
   <div v-motion-slide-top>
     <div class="card p:w-[450px] w-[350px] bg-base-100 shadow-xl align-center">
       <div class="card-body items-center text-center">
-        <h1 class="title-l">Contact</h1>
+        <h1 class="title-s p:title-l">Contact</h1>
         <div>
           <input type="email" placeholder="E-Mail"
-                 class="text-l input input-bordered border-2 input-primary w-full mb-5"
+                 class="text-s p:text-l input input-bordered border-2 input-primary w-full mb-5"
                  v-model="email"/>
           <textarea type="text" placeholder="Describe your issue here"
-                    class="text-l input input-bordered border-2 input-primary w-full mb-5 textarea h-24"
+                    class="text-s p:text-l input input-bordered border-2 input-primary w-full mb-5 textarea h-24"
                     v-model="message"/>
         </div>
       </div>
       <div class="card-actions justify-end mb-5">
-        <button class="text-l btn-main btn-wide align-center" @click.prevent="sendEmail()">Submit</button>
+        <button class="text-s p:text-l btn-main btn-wide align-center" @click.prevent="sendEmail()">Submit</button>
       </div>
     </div>
   </div>

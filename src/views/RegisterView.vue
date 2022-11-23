@@ -63,7 +63,7 @@ async function registerUser() {
   </div>
   <div id="warning"></div>
   <div v-motion-slide-top>
-    <div class="card cardDisplay p:w-[450px] w-[375px] bg-base-100 shadow-xl align-center">
+    <div class="card cardDisplay p:w-[450px] w-[350px] bg-base-100 shadow-xl align-center">
       <div class="card-body items-center text-center">
         <h1 class="title-l">Register</h1>
         <div>

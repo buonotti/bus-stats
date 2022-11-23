@@ -42,7 +42,7 @@ async function sendEmail() {
     </VueFinalModal>
   </div>
   <div v-motion-slide-top>
-    <div class="card p:w-[450px] w-[375px] bg-base-100 shadow-xl align-center">
+    <div class="card p:w-[450px] w-[350px] bg-base-100 shadow-xl align-center">
       <div class="card-body items-center text-center">
         <h1 class="title-l">Contact</h1>
         <div>

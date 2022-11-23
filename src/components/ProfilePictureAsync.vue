@@ -3,6 +3,7 @@ import { computed } from '@vue/reactivity';
 import { ref } from 'vue';
 import axios, { AxiosResponse } from "axios";
 import { useAuthenticationStore } from "../plugins/store";
+import { api } from '../plugins/api';
 
 const props = defineProps<{
   dataSrc: string
@@ -19,7 +20,7 @@ const imgSrc = computed(() => {
 async function fetchImage() {
   let response: AxiosResponse<any, any> | null = null
   try {
-    response = await axios.get("http://localhost:8080/api/v1/profile/" + authStore.id, {
+    response = await axios.get(api("profile") + authStore.id, {
       headers: {
         'Authorization': "Bearer " + authStore.token
       }

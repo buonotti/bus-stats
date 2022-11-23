@@ -1,9 +1,10 @@
 <script setup lang="ts">
 
-import {ref} from "vue";
-import axios, {AxiosResponse} from "axios";
-import {useAuthenticationStore} from "../plugins/store";
-import {useRouter} from "vue-router";
+import { ref } from "vue";
+import axios, { AxiosResponse } from "axios";
+import { useAuthenticationStore } from "../plugins/store";
+import { useRouter } from "vue-router";
+import { api } from "../plugins/api"
 
 const errorMsg = ref("")
 const email = ref("")
@@ -30,11 +31,11 @@ async function loginUser() {
   let response: AxiosResponse<any, any> | null = null
 
   try {
-    response = await axios.post("http://localhost:8080/api/v1/login", user)
+    response = await axios.post(api("login"), user)
     console.log(response, user)
     authStore.login(user.email)
     authStore.saveLoginData(response?.data.token, response?.data.uid)
-    await router.push("/bus-stats")
+    await router.push("/")
   } catch (e: any) {
     console.log(response?.status)
     modalOpen.value = true
@@ -49,7 +50,7 @@ async function loginUser() {
   <div>
     <VueFinalModal v-model="modalOpen" name="example" classes="modal-container" content-class="modal-content">
       <div class="modal__content">
-        {{errorMsg}}
+        {{ errorMsg }}
       </div>
     </VueFinalModal>
   </div>
@@ -60,11 +61,9 @@ async function loginUser() {
         <h1 class="title-l">Login</h1>
         <div>
           <input type="email" placeholder="E-Mail"
-                 class="text-l input input-bordered border-2 input-primary w-full mb-5"
-                 v-model="email"/>
+            class="text-l input input-bordered border-2 input-primary w-full mb-5" v-model="email" />
           <input type="password" placeholder="Password"
-                 class="text-l input input-bordered border-2 input-primary w-full mb-5"
-                 v-model="password"/>
+            class="text-l input input-bordered border-2 input-primary w-full mb-5" v-model="password" />
         </div>
       </div>
       <div class="card-actions justify-end mb-5">
@@ -72,7 +71,7 @@ async function loginUser() {
       </div>
       <div class="card-actions justify-center mb-5">
         <router-link to="/bus-stats/register" class="text-primary hover: cursor-pointer"
-                     style="font-family: 'Berlin Sans FB', sans-serif; text-decoration-line: underline">Register instead
+          style="font-family: 'Berlin Sans FB', sans-serif; text-decoration-line: underline">Register instead
         </router-link>
       </div>
     </div>

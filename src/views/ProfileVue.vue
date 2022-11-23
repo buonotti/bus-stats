@@ -16,7 +16,8 @@ const AsyncProfileComponent = defineAsyncComponent({
   loader: () => import("../components/ProfilePictureAsync.vue")
 })
 
-function setImg(e: events) {
+//TODO: check typing of e
+function setImg(e: any) {
   hasImg.value = true
   file.value = URL.createObjectURL(e.target.files[0]);
   uploadFile.value = e.target.files[0]

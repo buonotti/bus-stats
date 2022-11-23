@@ -35,6 +35,6 @@ src.value = await fetchImage()
 </script>
 
 <template>
-  <font-awesome-icon icon="user" class="mt-7 avatar-preview" v-if="imgSrc === 'none'"></font-awesome-icon>
+  <font-awesome-icon icon="user" id="test" class="mt-7" v-if="imgSrc === 'none'"></font-awesome-icon>
   <img :src="imgSrc" v-else class="avatar-preview" />
 </template>

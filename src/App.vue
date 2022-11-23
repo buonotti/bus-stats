@@ -26,8 +26,9 @@ function convertEmail(email: string) {
   <div class="relative flex flex-wrap items-center justify-between">
     <div class="sticky navbar bg-base-100 shadow-lg top-0 z-50">
       <div class="navbar-start">
+        <img src="../src/images/logo.svg" alt="" class="hidden m:flex h-12 ml-3">
         <router-link to="/"
-                     class="text-homepage-l flex flex-nowrap mt-2 mb-2 ml-24 items-center text-3xl capitalize btn btn-outline hidden m:flex">
+                     class="text-homepage-l flex flex-nowrap mt-2 mb-2 ml-8 items-center text-3xl capitalize btn btn-outline hidden m:flex">
           <div class="hidden xl:flex">Home</div>
           <font-awesome-icon icon="home" class="xl:ml-3"></font-awesome-icon>
         </router-link>
@@ -46,10 +47,35 @@ function convertEmail(email: string) {
           <div class="hidden xl:flex">About</div>
           <font-awesome-icon icon="circle-info" class="xl:ml-3"></font-awesome-icon>
         </router-link>
-        <button
-            class="text-homepage-l ml-2 flex flex-nowrap mt-2 mb-2 items-center text-3xl capitalize btn btn-outline flex m:hidden">
-          <font-awesome-icon icon="bars"></font-awesome-icon>
-        </button>
+        <div class="flex m:hidden">
+          <div class="dropdown m-1">
+            <label tabindex="0" class="text-3xl btn btn-ghost btn-circle avatar ">
+              <font-awesome-icon icon="bars"></font-awesome-icon>
+            </label>
+            <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+              <li>
+                <router-link class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif" to="/">
+                  Home
+                </router-link>
+              </li>
+              <li>
+                <router-link class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif" to="/lines">
+                  Lines
+                </router-link>
+              </li>
+              <li>
+                <router-link class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif" to="/contact">
+                  Contact
+                </router-link>
+              </li>
+              <li>
+                <router-link class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif" to="/about">
+                  About
+                </router-link>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
       <div class="navbar-center">
       </div>
@@ -97,20 +123,20 @@ function convertEmail(email: string) {
             </label>
             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
               <li>
-                <router-link class="justify-between" to="/register">
+                <router-link class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif" to="/register">
                   Register
                 </router-link>
               </li>
               <li>
-                <router-link class="justify-between" to="/login" v-if="!authStore.isLoggedIn">
+                <router-link class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif" to="/login" v-if="!authStore.isLoggedIn">
                   Login
                 </router-link>
-                <button class="justify-between" @click="authStore.logout" v-else>
+                <button class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif" @click="authStore.logout" v-else>
                   Logout
                 </button>
               </li>
               <li>
-                <router-link class="justify-between" to="/profile">
+                <router-link class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif" to="/profile">
                   Profile
                 </router-link>
               </li>

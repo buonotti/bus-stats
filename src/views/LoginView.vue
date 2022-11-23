@@ -56,7 +56,7 @@ async function loginUser() {
   </div>
   <div id="warning"></div>
   <div v-motion-slide-top>
-    <div class="card w-1/3 cardDisplay bg-base-100 shadow-xl align-center">
+    <div class="card w-[400px] cardDisplay bg-base-100 shadow-xl align-center">
       <div class="card-body items-center text-center">
         <h1 class="title-l">Login</h1>
         <div>
@@ -76,10 +76,10 @@ async function loginUser() {
       </div>
     </div>
   </div>
-  <div class="h-[600px] w-[300px] select-none align-top-left">
+  <div class="h-[600px] w-[300px] select-none align-top-left hidden 2xl:flex">
     <img src="../images/register_circle_left.png" class="h-full w-full" alt="">
   </div>
-  <div class="h-[400px] w-[350px] select-none align-bottom-right">
+  <div class="h-[400px] w-[350px] select-none align-bottom-right hidden 2xl:flex">
     <img src="../images/home_circle.png" class="h-full w-full" alt="">
   </div>
 </template>

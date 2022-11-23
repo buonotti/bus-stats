@@ -61,7 +61,7 @@ function encryptStr(str: string) {
   </div>
   <div id="warning"></div>
   <div v-motion-slide-top>
-    <div class="card w-1/3 cardDisplay bg-base-100 drop-shadow-2xl align-center mt-5">
+    <div class="card w-[400px] cardDisplay bg-base-100 drop-shadow-2xl align-center mt-5">
       <div class="card-body items-center text-center">
         <form>
           <div class="float-left ml-5 mt-25">
@@ -102,10 +102,10 @@ function encryptStr(str: string) {
       </div>
     </div>
   </div>
-  <div class="h-[600px] w-[300px] select-none align-top-left">
+  <div class="h-[600px] w-[300px] select-none align-top-left hidden 2xl:flex">
     <img src="../images/register_circle_left.png" class="h-full w-full" alt="">
   </div>
-  <div class="h-[400px] w-[350px] select-none align-bottom-right">
+  <div class="h-[400px] w-[350px] select-none align-bottom-right hidden 2xl:flex">
     <img src="../images/home_circle.png" class="h-full w-full" alt="">
   </div>
 </template>

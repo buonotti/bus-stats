@@ -42,7 +42,7 @@ async function sendEmail() {
     </VueFinalModal>
   </div>
   <div v-motion-slide-top>
-    <div class="card w-1/3 bg-base-100 shadow-xl align-center">
+    <div class="card p:w-[450px] w-[375px] bg-base-100 shadow-xl align-center">
       <div class="card-body items-center text-center">
         <h1 class="title-l">Contact</h1>
         <div>
@@ -60,10 +60,10 @@ async function sendEmail() {
     </div>
   </div>
   <div class="h-[600px] w-[300px] select-none align-top-left">
-    <img src="../images/register_circle_left.png" class="h-full w-full" alt="">
+    <img src="../images/register_circle_left.png" class="h-full w-full hidden 2xl:flex" alt="">
   </div>
   <div class="h-[400px] w-[350px] select-none align-bottom-right">
-    <img src="../images/home_circle.png" class="h-full w-full" alt="">
+    <img src="../images/home_circle.png" class="h-full w-full hidden 2xl:flex" alt="">
   </div>
 </template>
 

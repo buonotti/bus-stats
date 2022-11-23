@@ -61,7 +61,7 @@ function encryptStr(str: string) {
   </div>
   <div id="warning"></div>
   <div v-motion-slide-top>
-    <div class="card w-[400px] cardDisplay bg-base-100 drop-shadow-2xl align-center mt-5">
+    <div class="card p:w-[450px] w-[375px] cardDisplay bg-base-100 drop-shadow-2xl align-center mt-5">
       <div class="card-body items-center text-center">
         <form>
           <div class="float-left ml-5 mt-25">

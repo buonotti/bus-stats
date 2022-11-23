@@ -17,7 +17,7 @@
     }
 
     .title-homepage-s {
-        @apply text-[100px];
+        @apply text-[75px];
         font-family: "Berlin Sans FB", sans-serif;
     }
 
@@ -32,7 +32,7 @@
     }
 
     .title-s {
-        @apply text-[25px];
+        @apply text-[15px];
         font-family: "Berlin Sans FB", sans-serif;
     }
 

@@ -56,7 +56,7 @@ async function loginUser() {
   </div>
   <div id="warning"></div>
   <div v-motion-slide-top>
-    <div class="card w-[400px] cardDisplay bg-base-100 shadow-xl align-center">
+    <div class="card p:w-[450px] w-[375px] cardDisplay bg-base-100 shadow-xl align-center">
       <div class="card-body items-center text-center">
         <h1 class="title-l">Login</h1>
         <div>

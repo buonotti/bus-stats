@@ -113,7 +113,7 @@ function encryptStr(str: string) {
 <style scoped>
 body {
   background: whitesmoke;
-  font-family: 'Berlin Sans FB', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .avatar-upload {
@@ -182,7 +182,7 @@ body {
   margin: 0 1rem;
   padding: 3rem;
   background-color: white;
-  font-family: "Berlin Sans FB", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 33px;
   border-radius: 25px;
 }

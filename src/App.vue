@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
-import {useDark} from "@vueuse/core";
-import {useAuthenticationStore} from "./plugins/store";
+import { useDark } from "@vueuse/core";
+import { useAuthenticationStore } from "./plugins/store";
 
 const isDark = useDark({
   attribute: "data-theme",
@@ -28,22 +28,22 @@ function convertEmail(email: string) {
       <div class="navbar-start">
         <img src="../src/images/logo.svg" alt="" class="hidden m:flex h-12 ml-3">
         <router-link to="/"
-                     class="text-homepage-l flex flex-nowrap mt-2 mb-2 ml-8 items-center text-3xl capitalize btn btn-outline hidden m:flex">
+          class="text-homepage-l flex-nowrap mt-2 mb-2 ml-8 items-center text-3xl capitalize btn btn-outline hidden m:flex">
           <div class="hidden xl:flex">Home</div>
           <font-awesome-icon icon="home" class="xl:ml-3"></font-awesome-icon>
         </router-link>
         <router-link to="/lines"
-                     class="text-homepage-l flex flex-nowrap mt-2 mb-2 ml-5 items-center text-3xl capitalize btn btn-outline hidden m:flex">
+          class="text-homepage-l flex-nowrap mt-2 mb-2 ml-5 items-center text-3xl capitalize btn btn-outline hidden m:flex">
           <div class="hidden xl:flex">Lines</div>
           <font-awesome-icon icon="bus" class="xl:ml-3"></font-awesome-icon>
         </router-link>
         <router-link to="/contact"
-                     class="text-homepage-l flex flex-nowrap mt-2 mb-2 ml-5 items-center text-3xl capitalize btn btn-outline hidden m:flex">
+          class="text-homepage-l flex-nowrap mt-2 mb-2 ml-5 items-center text-3xl capitalize btn btn-outline hidden m:flex">
           <div class="hidden xl:flex">Contact</div>
           <font-awesome-icon icon="envelope" class="xl:ml-3"></font-awesome-icon>
         </router-link>
         <router-link to="/about"
-                     class="text-homepage-l flex flex-nowrap mt-2 mb-2 ml-5 items-center text-3xl capitalize btn btn-outline hidden m:flex">
+          class="text-homepage-l flex-nowrap mt-2 mb-2 ml-5 items-center text-3xl capitalize btn btn-outline hidden m:flex">
           <div class="hidden xl:flex">About</div>
           <font-awesome-icon icon="circle-info" class="xl:ml-3"></font-awesome-icon>
         </router-link>
@@ -97,22 +97,18 @@ function convertEmail(email: string) {
           </div>
         </div>
         <!-- NAME DISPLAY -->
-        <div v-motion
-             :initial="{
-              opacity: 0,
-              x: -100,
-             }"
-             :enter="{
-              opacity: 1,
-              x: 0,
-             }"
-             :leave="{
-              opacity: 0,
-              x: 100,
-             }"
-             class="flex-none m-1 hidden ml:flex" v-if="authStore.isLoggedIn">
-          <span class="badge text-m p-4 text-primary border-2 border-accent bg-base-100 border-base-100"
-                style="font-family: 'Berlin Sans FB', sans-serif;">{{ convertEmail(authStore.username) }}</span>
+        <div v-motion :initial="{
+          opacity: 0,
+          x: -100,
+        }" :enter="{
+  opacity: 1,
+  x: 0,
+}" :leave="{
+  opacity: 0,
+  x: 100,
+}" class="flex-none m-1 hidden ml:flex" v-if="authStore.isLoggedIn">
+          <span class="badge text-m p-4 text-primary border-2 border-accent bg-base-100"
+            style="font-family: 'Berlin Sans FB', sans-serif;">{{ convertEmail(authStore.username) }}</span>
         </div>
         <!-- PROFILE BUTTON -->
         <div class="flex-none">
@@ -128,10 +124,12 @@ function convertEmail(email: string) {
                 </router-link>
               </li>
               <li>
-                <router-link class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif" to="/login" v-if="!authStore.isLoggedIn">
+                <router-link class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif" to="/login"
+                  v-if="!authStore.isLoggedIn">
                   Login
                 </router-link>
-                <button class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif" @click="authStore.logout" v-else>
+                <button class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif"
+                  @click="authStore.logout" v-else>
                   Logout
                 </button>
               </li>
@@ -153,4 +151,5 @@ function convertEmail(email: string) {
 </template>
 
 <style scoped>
+
 </style>

@@ -70,7 +70,7 @@ async function loginUser() {
         <button class="text-l btn-main btn-wide align-center" @click.prevent="loginUser">Submit</button>
       </div>
       <div class="card-actions justify-center mb-5">
-        <router-link to="/bus-stats/register" class="text-primary hover: cursor-pointer"
+        <router-link to="/register" class="text-primary hover: cursor-pointer"
           style="font-family: 'Berlin Sans FB', sans-serif; text-decoration-line: underline">Register instead
         </router-link>
       </div>
@@ -97,7 +97,7 @@ async function loginUser() {
   margin: 0 1rem;
   padding: 3rem;
   background-color: white;
-  font-family: "Berlin Sans FB", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 33px;
   border-radius: 25px;
 }

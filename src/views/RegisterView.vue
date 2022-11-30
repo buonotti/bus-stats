@@ -79,7 +79,7 @@ async function registerUser() {
         <button class="text-l btn-main btn-wide align-center" @click.prevent="registerUser">Create</button>
       </div>
       <div class="card-actions justify-center mb-5">
-        <router-link to="/bus-stats/login" class="text-primary hover: cursor-pointer"
+        <router-link to="/login" class="text-primary hover: cursor-pointer"
           style="font-family: 'Berlin Sans FB', sans-serif; text-decoration-line: underline">Already have an
           account? Login
         </router-link>
@@ -107,7 +107,7 @@ async function registerUser() {
   margin: 0 1rem;
   padding: 3rem;
   background-color: white;
-  font-family: "Berlin Sans FB", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 33px;
   border-radius: 25px;
 }

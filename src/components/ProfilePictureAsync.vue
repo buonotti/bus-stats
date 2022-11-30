@@ -20,7 +20,7 @@ const imgSrc = computed(() => {
 async function fetchImage() {
   let response: AxiosResponse<any, any> | null = null
   try {
-    response = await axios.get(api("profile") + authStore.id, {
+    response = await axios.get(api("profile/") + authStore.id, {
       headers: {
         'Authorization': "Bearer " + authStore.token
       }

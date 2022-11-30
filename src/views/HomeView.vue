@@ -1,22 +1,3 @@
-<script setup lang="ts" >
-import {onMounted, ref} from "vue";
-import axios from 'axios'
-
-const health = ref('bad')
-
-onMounted(async () => {
-  try {
-    const apiHealth = await axios.get("http://localhost:8080/health")
-    if (apiHealth.status === 200) {
-      health.value = 'ok'
-    }
-  } catch (e) {
-    // ignored
-  }
-
-})
-</script>
-
 <template>
   <div class="float-left ml-5 m:ml-24 mt-16">
     <p class="title-homepage-s p:title-homepage-m m:title-homepage-l">BusStats</p>

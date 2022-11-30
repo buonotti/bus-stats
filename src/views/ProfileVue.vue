@@ -31,7 +31,7 @@ async function sendImg() {
 
   try {
     console.log(authStore.id)
-    response = await axios.post(api("profile") + authStore.id, bodyFormData, {
+    response = await axios.post(api("profile/") + authStore.id, bodyFormData, {
       headers: {
         'Authorization': "Bearer " + authStore.token
       }

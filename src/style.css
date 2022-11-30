@@ -1,4 +1,4 @@
-@import url('http://fonts.cdnfonts.com/css/berlin-sans-fb-demi');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,64 +8,64 @@
 @layer components {
     .title-homepage-l {
         @apply text-[150px];
-        font-family: "Berlin Sans FB", sans-serif;
+        font-family: "Roboto", sans-serif;
     }
 
     .title-homepage-m {
         @apply text-[125px];
-        font-family: "Berlin Sans FB", sans-serif;
+        font-family: "Roboto", sans-serif;
     }
 
     .title-homepage-s {
         @apply text-[75px];
-        font-family: "Berlin Sans FB", sans-serif;
+        font-family: "Roboto", sans-serif;
     }
 
     .title-l {
         @apply text-[100px];
-        font-family: "Berlin Sans FB", sans-serif;
+        font-family: "Roboto", sans-serif;
     }
 
     .title-m {
         @apply text-[50px];
-        font-family: "Berlin Sans FB", sans-serif;
+        font-family: "Roboto", sans-serif;
     }
 
     .title-s {
         @apply text-[15px];
-        font-family: "Berlin Sans FB", sans-serif;
+        font-family: "Roboto", sans-serif;
     }
 
     .text-homepage-l {
         @apply text-[50px];
-        font-family: "Berlin Sans FB", sans-serif;
+        font-family: "Roboto", sans-serif;
         line-height: 1em;
     }
 
     .text-homepage-m {
         @apply text-[33px];
-        font-family: "Berlin Sans FB", sans-serif;
+        font-family: "Roboto", sans-serif;
     }
 
     .text-homepage-s {
         @apply text-[17px];
-        font-family: "Berlin Sans FB", sans-serif;
+        font-family: "Roboto", sans-serif;
     }
 
     .text-l {
         @apply text-[33px];
-        font-family: "Berlin Sans FB", sans-serif;
+        font-family: "Roboto", sans-serif;
         line-height: 1em;
     }
 
     .text-m {
         @apply text-[22px];
-        font-family: "Berlin Sans FB", sans-serif;
+        font-family: "Roboto", sans-serif;
     }
 
     .text-s {
         @apply text-[11px];
-        font-family: "Berlin Sans FB", sans-serif;
+        font-family: "Roboto", sans-serif;
     }
 
 
@@ -146,7 +146,7 @@
     .tag {
         position: absolute;
         z-index: 10;
-        font-family: "Berlin Sans FB", sans-serif;
+        font-family: "Roboto", sans-serif;
         left: 50%;
         top: 50%;
         transform: translateY(+150%) translateX(-25%);

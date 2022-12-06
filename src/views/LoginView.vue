@@ -71,7 +71,7 @@ async function loginUser() {
       </div>
       <div class="card-actions justify-center mb-5">
         <router-link to="/register" class="text-primary hover: cursor-pointer"
-          style="font-family: 'Berlin Sans FB', sans-serif; text-decoration-line: underline">Register instead
+          style="font-family: 'Roboto', sans-serif; text-decoration-line: underline">Register instead
         </router-link>
       </div>
     </div>

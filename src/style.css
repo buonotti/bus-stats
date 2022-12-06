@@ -4,6 +4,22 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    font-family: "Roboto", sans-serif;
+}
+
+.skeleton {
+    animation: skeleton-loading 1s linear infinite alternate;
+  }
+  
+  @keyframes skeleton-loading {
+    0% {
+      @apply text-base-content 
+    }
+    100% {
+      @apply text-base-300
+    }
+  }
 
 @layer components {
     .title-homepage-l {

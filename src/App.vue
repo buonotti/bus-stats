@@ -37,11 +37,11 @@ function convertEmail(email: string) {
           <div class="hidden xl:flex">Lines</div>
           <font-awesome-icon icon="bus" class="xl:ml-3"></font-awesome-icon>
         </router-link>
-        <router-link to="/contact"
+        <!-- <router-link to="/contact"
           class="text-homepage-l flex-nowrap mt-2 mb-2 ml-5 items-center text-3xl capitalize btn btn-outline hidden m:flex">
           <div class="hidden xl:flex">Contact</div>
           <font-awesome-icon icon="envelope" class="xl:ml-3"></font-awesome-icon>
-        </router-link>
+        </router-link> -->
         <router-link to="/about"
           class="text-homepage-l flex-nowrap mt-2 mb-2 ml-5 items-center text-3xl capitalize btn btn-outline hidden m:flex">
           <div class="hidden xl:flex">About</div>
@@ -63,11 +63,11 @@ function convertEmail(email: string) {
                   Lines
                 </router-link>
               </li>
-              <li>
+              <!-- <li>
                 <router-link class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif" to="/contact">
                   Contact
                 </router-link>
-              </li>
+              </li> -->
               <li>
                 <router-link class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif" to="/about">
                   About

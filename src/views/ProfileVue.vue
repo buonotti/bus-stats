@@ -30,7 +30,7 @@ async function sendImg() {
   bodyFormData.append('image', uploadFile.value)
 
   try {
-    console.log(authStore.id)
+    //console.log(authStore.id)
     response = await axios.post(api("profile/") + authStore.id, bodyFormData, {
       headers: {
         'Authorization': "Bearer " + authStore.token
@@ -80,7 +80,7 @@ function encryptStr(str: string) {
                   <Suspense>
                     <AsyncProfileComponent :data-src="file" />
                     <template #fallback>
-                      <font-awesome-icon icon="user" class="mt-7"></font-awesome-icon>
+                      <font-awesome-icon icon="user" class="mt-7 skeleton"></font-awesome-icon>
                     </template>
                   </Suspense>
                 </div>

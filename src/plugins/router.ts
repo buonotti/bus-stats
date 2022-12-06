@@ -1,5 +1,5 @@
 import Home from "../views/HomeView.vue";
-import Lines from "../views/LinesView.vue";
+import Lines from "../views/MonitorsView.vue";
 import Contact from "../views/ContactView.vue";
 import About from "../views/AboutView.vue";
 import Register from "../views/RegisterView.vue";

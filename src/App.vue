@@ -32,9 +32,9 @@ function convertEmail(email: string) {
           <div class="hidden xl:flex">Home</div>
           <font-awesome-icon icon="home" class="xl:ml-3"></font-awesome-icon>
         </router-link>
-        <router-link to="/lines"
+        <router-link to="/monitors"
           class="text-homepage-l flex-nowrap mt-2 mb-2 ml-5 items-center text-3xl capitalize btn btn-outline hidden m:flex">
-          <div class="hidden xl:flex">Lines</div>
+          <div class="hidden xl:flex">Monitors</div>
           <font-awesome-icon icon="bus" class="xl:ml-3"></font-awesome-icon>
         </router-link>
         <!-- <router-link to="/contact"
@@ -59,8 +59,8 @@ function convertEmail(email: string) {
                 </router-link>
               </li>
               <li>
-                <router-link class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif" to="/lines">
-                  Lines
+                <router-link class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif" to="/monitors">
+                  Monitors
                 </router-link>
               </li>
               <!-- <li>
@@ -101,13 +101,13 @@ function convertEmail(email: string) {
           opacity: 0,
           x: -100,
         }" :enter="{
-  opacity: 1,
-  x: 0,
-}" :leave="{
-  opacity: 0,
-  x: 100,
-}" class="flex-none m-1 hidden ml:flex" v-if="authStore.isLoggedIn">
-          <span class="badge text-m p-4 text-primary border-2 border-accent bg-base-100"
+        opacity: 1,
+        x: 0,
+        }" :leave="{
+        opacity: 0,
+        x: 100,
+        }" class="flex-none m-1 hidden ml:flex" v-if="authStore.isLoggedIn">
+          <span class="badge text-m p-4 text-primary border-2 border-primary bg-base-100"
             style="font-family: 'Berlin Sans FB', sans-serif;">{{ convertEmail(authStore.username) }}</span>
         </div>
         <!-- PROFILE BUTTON -->
@@ -145,9 +145,12 @@ function convertEmail(email: string) {
     </div>
   </div>
 
-  <div class="h-screen">
+  <div class="min-h-screen">
     <router-view></router-view>
   </div>
+  <footer class="footer footer-center p-1 border-t-4 border-primary text-base-content text-s mt-auto">
+    Copyright &copy; Buonotti 2022
+  </footer>
 </template>
 
 <style scoped>

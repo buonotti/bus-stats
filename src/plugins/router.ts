@@ -1,5 +1,6 @@
 import Home from "../views/HomeView.vue";
-import Lines from "../views/MonitorsView.vue";
+import Monitors from "../views/MonitorsView.vue";
+import CreateMonitor from "../views/CreateMonitorView.vue";
 import Contact from "../views/ContactView.vue";
 import About from "../views/AboutView.vue";
 import Register from "../views/RegisterView.vue";
@@ -17,10 +18,17 @@ const routes = [
     },
   },
   {
-    path: "/lines",
-    component: Lines,
+    path: "/monitors",
+    component: Monitors,
     meta: {
       requireAuth: false,
+    },
+  },
+  {
+    path: "/createMonitor",
+    component: CreateMonitor,
+    meta: {
+      requireAuth: true,
     },
   },
   /* {

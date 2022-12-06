@@ -172,3 +172,23 @@
         resize: none;
     }
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: hsl(var(--b2));
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: hsl(var(--p));
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--s));
+}

@@ -42,7 +42,7 @@ function showModal()
     <div class="mt-3 flex justify-center m:justify-start">
       <div class="content-center shadow-2xl inline-block rounded-[0.5rem]">
         <div class="text-m m-3 bg-primary rounded-[0.5rem] p-1">
-          <input type="text" class="bg-primary m:w-80" placeholder="Search.." v-model="filter">
+          <input type="text" class="bg-primary w-64 m:w-80" placeholder="Search.." v-model="filter">
           <button type="submit" class="p-1">
             <font-awesome-icon icon="magnifying-glass"></font-awesome-icon>
           </button>

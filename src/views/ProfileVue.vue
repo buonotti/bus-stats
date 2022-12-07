@@ -104,11 +104,13 @@ function encryptStr(str: string) {
                   </Suspense>
                 </div>
               </div>
-              <div class="avatar-remove" v-if="authStore.hasProfile" @click="deleteImage">
+              <!--
+                <div class="avatar-remove" v-if="authStore.hasProfile" @click="deleteImage">
                 <label for="" class="text-3xl">
                   <font-awesome-icon icon="trash"></font-awesome-icon>
                 </label>
               </div>
+              -->
             </div>
             <div>
               <p class="text-l mt-5">

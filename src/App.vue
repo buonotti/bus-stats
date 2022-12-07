@@ -116,12 +116,12 @@ function convertEmail(email: string) {
           <div class="dropdown dropdown-end m-1">
             <label tabindex="0" class="text-3xl btn btn-ghost btn-circle avatar ">
               <Suspense v-if="authStore.isLoggedIn">
-                <ProfilePictureAsync data-src="" />
+                <ProfilePictureAsync data-src="" class="rounded-[100%]" />
                 <template #fallback>
                   <font-awesome-icon icon="user" class="skeleton"></font-awesome-icon>
                 </template>
               </Suspense>
-              <font-awesome-icon icon="user" class="" v-else></font-awesome-icon>
+              <font-awesome-icon icon="user" v-else></font-awesome-icon>
             </label>
             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
               <li>

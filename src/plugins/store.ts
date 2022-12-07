@@ -10,6 +10,7 @@ export const useAuthenticationStore = defineStore("auth", () => {
   const username = computed(() => _username.value);
   const id = ref("");
   const token = ref("");
+  const hasProfile = ref(false);
 
   function login(message: string) {
     _username.value = message;
@@ -29,5 +30,14 @@ export const useAuthenticationStore = defineStore("auth", () => {
     token.value = tokenValue;
   }
 
-  return { isLoggedIn, username, id, token, login, logout, saveLoginData };
+  return {
+    isLoggedIn,
+    username,
+    id,
+    token,
+    hasProfile,
+    login,
+    logout,
+    saveLoginData,
+  };
 });

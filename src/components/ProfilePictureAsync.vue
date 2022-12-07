@@ -8,6 +8,7 @@ import { api } from '../plugins/api';
 const props = defineProps<{
   dataSrc: string
 }>()
+
 const authStore = useAuthenticationStore()
 const src = ref("")
 const imgSrc = computed(() => {
@@ -17,6 +18,7 @@ const imgSrc = computed(() => {
   return src.value
 })
 
+
 async function fetchImage() {
   let response: AxiosResponse<any, any> | null = null
   try {
@@ -25,6 +27,7 @@ async function fetchImage() {
         'Authorization': "Bearer " + authStore.token
       }
     })
+    authStore.hasProfile = true
     return `data:${response!.data.file_type};base64, ${response!.data.file_data}`
   } catch (e: any) {
     return "none"
@@ -35,6 +38,6 @@ src.value = await fetchImage()
 </script>
 
 <template>
-  <font-awesome-icon icon="user" id="test" class="mt-7" v-if="imgSrc === 'none'"></font-awesome-icon>
+  <font-awesome-icon icon="user" id="test" v-if="imgSrc === 'none'"></font-awesome-icon>
   <img :src="imgSrc" v-else class="avatar-preview" />
 </template>

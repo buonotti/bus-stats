@@ -4,7 +4,6 @@ import { useDark } from "@vueuse/core";
 import { ref } from "vue";
 import ProfilePictureAsync from "./components/ProfilePictureAsync.vue";
 import { useAuthenticationStore } from "./plugins/store";
-import { ref } from 'vue';
 
 const isDark = useDark({
   attribute: "data-theme",
@@ -98,7 +97,8 @@ authStore.registerProfileUpdateHandler(() => {
         <!-- HELP-MODE BUTTON -->
         <div class="flex flex-col lg:flex-row list-none ml-auto">
           <div class="dropdown dropdown-end m-1">
-            <a tabindex="0" class="text-3xl btn btn-ghost btn-circle avatar" href="https://bus-stats-api-prod-bus-stats-api-zd0528.mo5.mogenius.io/swagger/index.html" target="_blank">
+            <a tabindex="0" class="text-3xl btn btn-ghost btn-circle avatar"
+              href="https://bus-stats-api-prod-bus-stats-api-zd0528.mo5.mogenius.io/swagger/index.html" target="_blank">
               <font-awesome-icon icon="circle-question"></font-awesome-icon>
             </a>
           </div>

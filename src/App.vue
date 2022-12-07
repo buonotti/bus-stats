@@ -114,7 +114,6 @@ function convertEmail(email: string) {
         <div class="flex-none">
           <div class="dropdown dropdown-end m-1">
             <label tabindex="0" class="text-3xl btn btn-ghost btn-circle avatar ">
-              <!-- TODO Set icon to PFP-->
               <font-awesome-icon icon="user"></font-awesome-icon>
             </label>
             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
@@ -148,7 +147,7 @@ function convertEmail(email: string) {
   <div class="min-h-screen">
     <router-view></router-view>
   </div>
-  <footer class="footer footer-center p-1 border-t-4 border-primary text-base-content text-s mt-auto">
+  <footer class="footer footer-center p-1 border-t-2 border-primary text-base-content text-s mt-auto">
     Copyright &copy; Buonotti 2022
   </footer>
 </template>

@@ -42,7 +42,7 @@ function showModal()
     <div class="mt-3 flex justify-center m:justify-start">
       <div class="content-center shadow-2xl inline-block rounded-[0.5rem]">
         <div class="text-m m-3 bg-primary rounded-[0.5rem] p-1">
-          <input type="text" class="bg-primary p-1" placeholder="Search.." v-model="filter">
+          <input type="text" class="bg-primary m:w-80" placeholder="Search.." v-model="filter">
           <button type="submit" class="p-1">
             <font-awesome-icon icon="magnifying-glass"></font-awesome-icon>
           </button>
@@ -52,7 +52,7 @@ function showModal()
     <div>
       <div class="flex justify-center m:justify-start flex-wrap whitespace-nowrap my-5">
         <div v-for="(publicMonitor) in publicMonitors">
-          <div class="card w-96 bg-base-100 shadow-xl mr-5 mb-5" v-if="publicMonitor.route.toLowerCase().includes(filter.toLowerCase())">
+          <div class="card w-80 m:w-96 bg-base-100 shadow-xl mr-5 mb-5" v-if="publicMonitor.route.toLowerCase().includes(filter.toLowerCase())">
             <div class="bg-primary h-[30px]"></div>
             <div class="card-body">
               <h2 class="card-title">

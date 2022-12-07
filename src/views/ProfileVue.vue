@@ -5,6 +5,7 @@ import { defineAsyncComponent, ref } from "vue";
 import { useAuthenticationStore } from "../plugins/store";
 import axios, { AxiosResponse } from "axios";
 import { api } from "../plugins/api";
+import ProfilePictureAsync from "../components/ProfilePictureAsync.vue";
 
 const file = ref("")
 const uploadFile = ref("")
@@ -12,10 +13,6 @@ const hasImg = ref(true)
 const authStore = useAuthenticationStore()
 const errorMsg = ref("")
 const modalOpen = ref(false)
-
-const AsyncProfileComponent = defineAsyncComponent({
-  loader: () => import("../components/ProfilePictureAsync.vue")
-})
 
 function setImg(e: any) {
   hasImg.value = true
@@ -38,6 +35,27 @@ async function sendImg() {
     })
     modalOpen.value = true
     errorMsg.value = "Saved changes!"
+  } catch (e: any) {
+    modalOpen.value = true
+    errorMsg.value = e.response.data.message.split(':')[1]
+    console.log(e.response.data.message)
+  } finally {
+    console.log(response?.status)
+  }
+}
+
+async function deleteImage() {
+  let response: AxiosResponse<any, any> | null = null
+  try {
+    response = await axios.delete(api("profile/") + authStore.id, {
+      headers: {
+        'Authorization': "Bearer " + authStore.token
+      }
+    })
+    modalOpen.value = true
+    errorMsg.value = "Deleted image!"
+    authStore.hasProfile = false
+    hasImg.value = false
   } catch (e: any) {
     modalOpen.value = true
     errorMsg.value = e.response.data.message.split(':')[1]
@@ -79,13 +97,18 @@ function encryptStr(str: string) {
               </div>
               <div class="avatar-preview drop-shadow-2xl">
                 <div id="imagePreview" class="bg-base-100 text-9xl drop-shadow-2xl">
-                  <Suspense>
-                    <AsyncProfileComponent :data-src="file" />
+                  <Suspense class="mt-7">
+                    <ProfilePictureAsync :data-src="file" class="mt-7" />
                     <template #fallback>
                       <font-awesome-icon icon="user" class="mt-7 skeleton"></font-awesome-icon>
                     </template>
                   </Suspense>
                 </div>
+              </div>
+              <div class="avatar-remove" v-if="authStore.hasProfile" @click="deleteImage">
+                <label for="" class="text-3xl">
+                  <font-awesome-icon icon="trash"></font-awesome-icon>
+                </label>
               </div>
             </div>
             <div>
@@ -129,6 +152,13 @@ body {
   right: 12px;
   z-index: 1;
   top: 10px;
+}
+
+.avatar-upload .avatar-remove {
+  position: absolute;
+  right: 12px;
+  z-index: 1;
+  bottom: 10px;
 }
 
 .avatar-upload .avatar-edit input {

@@ -100,7 +100,8 @@ textarea::placeholder, input::placeholder{
   flex-direction: column;
   margin: 0 1rem;
   padding: 3rem;
-  background-color: white;
+  background-color: hsl(var(--b2));
+  color: hsl(var(--p));
   font-family: "Roboto", sans-serif;
   font-size: 33px;
   border-radius: 25px;

@@ -38,7 +38,7 @@ async function registerUser() {
       await router.push("/login")
     } catch (e: any) {
       console.log(e)
-      errorMsg.value = e.response.data.message
+      errorMsg.value = e.response.data.message.split(':')[1]
       modalOpen.value = true;
     } finally {
       console.log(response?.status)

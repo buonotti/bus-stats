@@ -39,7 +39,7 @@ async function loginUser() {
   } catch (e: any) {
     console.log(response?.status)
     modalOpen.value = true
-    errorMsg.value = "Password or email are invalid!"
+    errorMsg.value = e.response.data.message.split(':')[1]
   } finally {
     console.log(response?.status)
   }

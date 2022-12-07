@@ -3,6 +3,7 @@
 import { useDark } from "@vueuse/core";
 import ProfilePictureAsync from "./components/ProfilePictureAsync.vue";
 import { useAuthenticationStore } from "./plugins/store";
+import { ref } from 'vue';
 
 const isDark = useDark({
   attribute: "data-theme",
@@ -12,6 +13,7 @@ const isDark = useDark({
 })
 
 const authStore = useAuthenticationStore()
+const modalOpen = ref(false);
 
 function convertEmail(email: string) {
   if (email.length > 20) {
@@ -24,6 +26,11 @@ function convertEmail(email: string) {
 </script>
 
 <template class="">
+  <VueFinalModal v-model="modalOpen" name="example" classes="modal-container" content-class="modal-content">
+    <div class="modal__content">
+
+    </div>
+  </VueFinalModal>
   <div class="relative flex flex-wrap items-center justify-between">
     <div class="sticky navbar bg-base-100 shadow-lg top-0 z-50">
       <div class="navbar-start">
@@ -84,9 +91,9 @@ function convertEmail(email: string) {
         <!-- HELP-MODE BUTTON -->
         <div class="flex flex-col lg:flex-row list-none ml-auto">
           <div class="dropdown dropdown-end m-1">
-            <label tabindex="0" class="text-3xl btn btn-ghost btn-circle avatar">
+            <a tabindex="0" class="text-3xl btn btn-ghost btn-circle avatar" href="https://bus-stats-api-prod-bus-stats-api-zd0528.mo5.mogenius.io/swagger/index.html" target="_blank">
               <font-awesome-icon icon="circle-question"></font-awesome-icon>
-            </label>
+            </a>
           </div>
         </div>
         <!-- DARK-MODE BUTTON -->
@@ -160,5 +167,21 @@ function convertEmail(email: string) {
 </template>
 
 <style scoped>
+:deep .modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+:deep .modal-content {
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem;
+  padding: 3rem;
+  background-color: hsl(var(--b2));
+  color: hsl(var(--p));
+  font-family: "Berlin Sans FB", sans-serif;
+  font-size: 33px;
+  border-radius: 25px;
+}
 </style>

@@ -1,11 +1,9 @@
 <script setup lang="ts">
-// @ts-ignore
-import * as events from "events";
-import { defineAsyncComponent, ref } from "vue";
 import { useAuthenticationStore } from "../plugins/store";
 import axios, { AxiosResponse } from "axios";
 import { api } from "../plugins/api";
 import ProfilePictureAsync from "../components/ProfilePictureAsync.vue";
+import { ref } from "vue";
 
 const file = ref("")
 const uploadFile = ref("")
@@ -21,32 +19,27 @@ function setImg(e: any) {
 }
 
 async function sendImg() {
-  let response: AxiosResponse<any, any> | null = null
   let bodyFormData = new FormData();
   bodyFormData.append('image', uploadFile.value)
 
   try {
-    //console.log(authStore.id)
-    response = await axios.post(api("profile/") + authStore.id, bodyFormData, {
+    await axios.post(api("profile/") + authStore.id, bodyFormData, {
       headers: {
         'Authorization': "Bearer " + authStore.token
       }
     })
     modalOpen.value = true
     errorMsg.value = "Saved changes!"
+    authStore.triggerUpdate()
   } catch (e: any) {
     modalOpen.value = true
     errorMsg.value = e.response.data.message.split(':')[1]
-    console.log(e.response.data.message)
-  } finally {
-    console.log(response?.status)
   }
 }
 
 async function deleteImage() {
-  let response: AxiosResponse<any, any> | null = null
   try {
-    response = await axios.delete(api("profile/") + authStore.id, {
+    await axios.delete(api("profile/") + authStore.id, {
       headers: {
         'Authorization': "Bearer " + authStore.token
       }
@@ -58,9 +51,6 @@ async function deleteImage() {
   } catch (e: any) {
     modalOpen.value = true
     errorMsg.value = e.response.data.message.split(':')[1]
-    console.log(e.response.data.message)
-  } finally {
-    console.log(response?.status)
   }
 }
 

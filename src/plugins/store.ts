@@ -12,9 +12,19 @@ export const useAuthenticationStore = defineStore("auth", () => {
   const token = ref("");
   const hasProfile = ref(false);
 
+  let updateHandler: () => void = () => {};
+
   function login(message: string) {
     _username.value = message;
     isLoggedIn.value = true;
+  }
+
+  function registerProfileUpdateHandler(f: () => void) {
+    updateHandler = f;
+  }
+
+  function triggerUpdate() {
+    updateHandler();
   }
 
   async function logout() {
@@ -39,5 +49,7 @@ export const useAuthenticationStore = defineStore("auth", () => {
     login,
     logout,
     saveLoginData,
+    registerProfileUpdateHandler,
+    triggerUpdate,
   };
 });

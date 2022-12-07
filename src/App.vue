@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import { useDark } from "@vueuse/core";
+import { ref } from "vue";
 import ProfilePictureAsync from "./components/ProfilePictureAsync.vue";
 import { useAuthenticationStore } from "./plugins/store";
 
@@ -20,6 +21,12 @@ function convertEmail(email: string) {
   }
   return email
 }
+
+const key = ref(0)
+
+authStore.registerProfileUpdateHandler(() => {
+  key.value++
+})
 
 </script>
 
@@ -55,22 +62,22 @@ function convertEmail(email: string) {
             </label>
             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
               <li>
-                <router-link class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif" to="/">
+                <router-link class="justify-between" to="/">
                   Home
                 </router-link>
               </li>
               <li>
-                <router-link class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif" to="/monitors">
+                <router-link class="justify-between" to="/monitors">
                   Monitors
                 </router-link>
               </li>
               <!-- <li>
-                <router-link class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif" to="/contact">
+                <router-link class="justify-between"  to="/contact">
                   Contact
                 </router-link>
               </li> -->
               <li>
-                <router-link class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif" to="/about">
+                <router-link class="justify-between" to="/about">
                   About
                 </router-link>
               </li>
@@ -108,14 +115,15 @@ function convertEmail(email: string) {
   opacity: 0,
   x: 100,
 }" class="flex-none m-1 hidden ml:flex" v-if="authStore.isLoggedIn">
-          <span class="badge text-m p-4 text-primary border-2 border-primary bg-base-100"
-            style="font-family: 'Berlin Sans FB', sans-serif;">{{ convertEmail(authStore.username) }}</span>
+          <span class="badge text-m p-4 text-primary border-2 border-primary bg-base-100">
+            {{ convertEmail(authStore.username) }}
+          </span>
         </div>
         <!-- PROFILE BUTTON -->
         <div class="flex-none">
           <div class="dropdown dropdown-end m-1">
             <label tabindex="0" class="text-3xl btn btn-ghost btn-circle avatar ">
-              <Suspense v-if="authStore.isLoggedIn">
+              <Suspense v-if="authStore.isLoggedIn" :key="key">
                 <ProfilePictureAsync data-src="" class="rounded-[100%]" />
                 <template #fallback>
                   <font-awesome-icon icon="user" class="skeleton"></font-awesome-icon>
@@ -125,22 +133,20 @@ function convertEmail(email: string) {
             </label>
             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
               <li>
-                <router-link class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif" to="/register">
+                <router-link class="justify-between" to="/register">
                   Register
                 </router-link>
               </li>
               <li>
-                <router-link class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif" to="/login"
-                  v-if="!authStore.isLoggedIn">
+                <router-link class="justify-between" to="/login" v-if="!authStore.isLoggedIn">
                   Login
                 </router-link>
-                <button class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif"
-                  @click="authStore.logout" v-else>
+                <button class="justify-between" @click="authStore.logout" v-else>
                   Logout
                 </button>
               </li>
               <li>
-                <router-link class="justify-between" style="font-family: 'Berlin Sans FB', sans-serif" to="/profile">
+                <router-link class="justify-between" to="/profile">
                   Profile
                 </router-link>
               </li>

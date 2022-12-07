@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import { ref } from "vue";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { useRouter } from "vue-router";
 import { api } from "../plugins/api";
 
@@ -27,21 +27,14 @@ async function registerUser() {
   }
 
   if (user.password === passwordRepeat.value && user.password.length >= 3) {
-    let response: AxiosResponse<any, any> | null = null
-
     user.password = await sha256(user.password)
-    console.log(user.password)
 
     try {
-      response = await axios.post(api("register"), user)
-
+      await axios.post(api("register"), user)
       await router.push("/login")
     } catch (e: any) {
-      console.log(e)
       errorMsg.value = e.response.data.message.split(':')[1]
       modalOpen.value = true;
-    } finally {
-      console.log(response?.status)
     }
   } else if (user.password.length < 3) {
     errorMsg.value = "Password length must be greater than 3"

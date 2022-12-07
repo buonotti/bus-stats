@@ -1,24 +1,25 @@
 <script setup lang="ts">
-import {ref} from "vue";
+import { ref } from "vue";
 
 const filter = ref("")
 const modalOpen = ref(false)
 
 const publicMonitors = ref([
-    { route: 'Meran - Bozen', exists: true, times: [{start: '06:00', accurate: true, runtime: '1 Week(s)'},
-                                                    {start: '08:00', accurate: true, runtime: '2 Week(s)'},
-                                                    {start: '13:45', accurate: false, runtime: '3 Day(s)'}] },
-     { route: 'Mals - Meran', exists: true, times: [{start: '06:30', accurate: true, runtime: '1 Week(s)'},
-                                                    {start: '11:00', accurate: false, runtime: '2 Day(s)'},
-                                                    {start: '16:58', accurate: true, runtime: '3 Month(s)'}] },
-    { route: 'Bozen - Brixen', exists: true, times:[{start: '07:30', accurate: true, runtime: '1 Month(s)'},
-                                                    {start: '08:12', accurate: false, runtime: '2 Day(s)'},
-                                                    {start: '17:20', accurate: false, runtime: '6 Day(s)'}] }])
-
-function showModal()
-{
-  modalOpen.value = true
-}
+  {
+    route: 'Meran - Bozen', exists: true, times: [{ start: '06:00', accurate: true, runtime: '1 Week(s)' },
+    { start: '08:00', accurate: true, runtime: '2 Week(s)' },
+    { start: '13:45', accurate: false, runtime: '3 Day(s)' }]
+  },
+  {
+    route: 'Mals - Meran', exists: true, times: [{ start: '06:30', accurate: true, runtime: '1 Week(s)' },
+    { start: '11:00', accurate: false, runtime: '2 Day(s)' },
+    { start: '16:58', accurate: true, runtime: '3 Month(s)' }]
+  },
+  {
+    route: 'Bozen - Brixen', exists: true, times: [{ start: '07:30', accurate: true, runtime: '1 Month(s)' },
+    { start: '08:12', accurate: false, runtime: '2 Day(s)' },
+    { start: '17:20', accurate: false, runtime: '6 Day(s)' }]
+  }])
 
 </script>
 
@@ -50,9 +51,11 @@ function showModal()
       </div>
     </div>
     <div>
-      <div class="flex-col m:flex-row flex justify-center m:justify-start content-center flex-wrap whitespace-nowrap my-5">
+      <div
+        class="flex-col m:flex-row flex justify-center m:justify-start content-center flex-wrap whitespace-nowrap my-5">
         <div v-for="(publicMonitor) in publicMonitors">
-          <div class="card w-80 m:w-96 bg-base-100 shadow-xl m:mr-5 mb-5" v-if="publicMonitor.route.toLowerCase().includes(filter.toLowerCase())">
+          <div class="card w-80 m:w-96 bg-base-100 shadow-xl m:mr-5 mb-5"
+            v-if="publicMonitor.route.toLowerCase().includes(filter.toLowerCase())">
             <div class="bg-primary h-[30px]"></div>
             <div class="card-body">
               <h2 class="card-title">
@@ -61,14 +64,14 @@ function showModal()
               <div v-for="time in publicMonitor.times" class="m-1">
                 {{ time.start }}
                 <span class="badge badge-success" v-if="time.accurate">
-                {{ time.runtime }}
-              </span>
+                  {{ time.runtime }}
+                </span>
                 <span class="badge badge-error" v-else>
-                {{ time.runtime }}
-              </span>
+                  {{ time.runtime }}
+                </span>
               </div>
               <div class="card-actions ml-2 text-l">
-                <button @click.prevent="showModal()">
+                <button @click.prevent="(modalOpen = true)">
                   <font-awesome-icon icon="circle-plus" class="text-primary"></font-awesome-icon>
                 </button>
               </div>
@@ -81,14 +84,18 @@ function showModal()
 </template>
 
 <style scoped>
-textarea:focus, input:focus{
+textarea:focus,
+input:focus {
   outline: none;
 }
-textarea::placeholder, input::placeholder{
+
+textarea::placeholder,
+input::placeholder {
   outline: none;
   color: hsl(var(--bc));
   opacity: 70%;
 }
+
 :deep .modal-container {
   display: flex;
   justify-content: center;

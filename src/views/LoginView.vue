@@ -22,7 +22,6 @@ async function sha256(message: string) {
 }
 
 async function loginUser() {
-
   passwordHash.value = await sha256(password.value);
   const user = {
     email: email.value,
@@ -32,16 +31,12 @@ async function loginUser() {
 
   try {
     response = await axios.post(api("login"), user)
-    console.log(response, user)
     authStore.login(user.email)
     authStore.saveLoginData(response?.data.token, response?.data.uid)
     await router.push("/")
   } catch (e: any) {
-    console.log(response?.status)
     modalOpen.value = true
     errorMsg.value = e.response.data.message.split(':')[1]
-  } finally {
-    console.log(response?.status)
   }
 }
 

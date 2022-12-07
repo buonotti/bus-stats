@@ -31,13 +31,6 @@ const routes = [
       requireAuth: true,
     },
   },
-  /* {
-        path: '/contact',
-        component: Contact,
-        meta: {
-            requireAuth: false
-        }
-    }, */
   {
     path: "/about",
     component: About,
@@ -76,7 +69,8 @@ const router = createRouter({
   routes,
   history: createWebHistory(),
 });
-router.beforeEach((to, from, next) => {
+
+router.beforeEach((to, _, next) => {
   const authStore = useAuthenticationStore();
 
   if (to.matched.some((record) => record.meta.requireAuth)) {

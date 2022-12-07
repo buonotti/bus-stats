@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import { useDark } from "@vueuse/core";
+import ProfilePictureAsync from "./components/ProfilePictureAsync.vue";
 import { useAuthenticationStore } from "./plugins/store";
 
 const isDark = useDark({
@@ -101,12 +102,12 @@ function convertEmail(email: string) {
           opacity: 0,
           x: -100,
         }" :enter="{
-        opacity: 1,
-        x: 0,
-        }" :leave="{
-        opacity: 0,
-        x: 100,
-        }" class="flex-none m-1 hidden ml:flex" v-if="authStore.isLoggedIn">
+  opacity: 1,
+  x: 0,
+}" :leave="{
+  opacity: 0,
+  x: 100,
+}" class="flex-none m-1 hidden ml:flex" v-if="authStore.isLoggedIn">
           <span class="badge text-m p-4 text-primary border-2 border-primary bg-base-100"
             style="font-family: 'Berlin Sans FB', sans-serif;">{{ convertEmail(authStore.username) }}</span>
         </div>
@@ -114,8 +115,13 @@ function convertEmail(email: string) {
         <div class="flex-none">
           <div class="dropdown dropdown-end m-1">
             <label tabindex="0" class="text-3xl btn btn-ghost btn-circle avatar ">
-              <!-- TODO Set icon to PFP-->
-              <font-awesome-icon icon="user"></font-awesome-icon>
+              <Suspense v-if="authStore.isLoggedIn">
+                <ProfilePictureAsync data-src="" />
+                <template #fallback>
+                  <font-awesome-icon icon="user" class="skeleton"></font-awesome-icon>
+                </template>
+              </Suspense>
+              <font-awesome-icon icon="user" class="" v-else></font-awesome-icon>
             </label>
             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
               <li>

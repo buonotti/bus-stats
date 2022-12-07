@@ -17,7 +17,6 @@ const AsyncProfileComponent = defineAsyncComponent({
   loader: () => import("../components/ProfilePictureAsync.vue")
 })
 
-//TODO: check typing of e
 function setImg(e: any) {
   hasImg.value = true
   file.value = URL.createObjectURL(e.target.files[0]);
@@ -29,6 +28,7 @@ async function sendImg() {
   let bodyFormData = new FormData();
   bodyFormData.append('image', uploadFile.value)
 
+  //TODO: check user modal
   try {
     //console.log(authStore.id)
     response = await axios.post(api("profile/") + authStore.id, bodyFormData, {
@@ -36,9 +36,11 @@ async function sendImg() {
         'Authorization': "Bearer " + authStore.token
       }
     })
+    modalOpen.value = true
+    errorMsg.value = "Saved changes!"
   } catch (e: any) {
     modalOpen.value = true
-    errorMsg.value = e.response.data.message
+    errorMsg.value = e.response.data.message.split(':')[1]
     console.log(e.response.data.message)
   } finally {
     console.log(response?.status)

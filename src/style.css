@@ -28,7 +28,7 @@
     }
 
     .title-homepage-m {
-        @apply text-[125px];
+        @apply text-[105px];
         font-family: "Roboto", sans-serif;
     }
 

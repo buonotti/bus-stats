@@ -154,7 +154,7 @@ function convertEmail(email: string) {
   <div class="min-h-screen">
     <router-view></router-view>
   </div>
-  <footer class="footer footer-center p-1 border-t-4 border-primary text-base-content text-s mt-auto">
+  <footer class="footer footer-center p-1 border-t-2 border-primary text-base-content text-s mt-auto">
     Copyright &copy; Buonotti 2022
   </footer>
 </template>

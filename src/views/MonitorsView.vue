@@ -50,9 +50,9 @@ function showModal()
       </div>
     </div>
     <div>
-      <div class="flex justify-center m:justify-start flex-wrap whitespace-nowrap my-5">
+      <div class="flex-col m:flex-row flex justify-center m:justify-start content-center flex-wrap whitespace-nowrap my-5">
         <div v-for="(publicMonitor) in publicMonitors">
-          <div class="card w-80 m:w-96 bg-base-100 shadow-xl mr-5 mb-5" v-if="publicMonitor.route.toLowerCase().includes(filter.toLowerCase())">
+          <div class="card w-80 m:w-96 bg-base-100 shadow-xl m:mr-5 mb-5" v-if="publicMonitor.route.toLowerCase().includes(filter.toLowerCase())">
             <div class="bg-primary h-[30px]"></div>
             <div class="card-body">
               <h2 class="card-title">

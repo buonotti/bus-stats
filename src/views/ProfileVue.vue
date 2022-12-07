@@ -25,7 +25,6 @@ async function sendImg() {
   let bodyFormData = new FormData();
   bodyFormData.append('image', uploadFile.value)
 
-  //TODO: check user modal
   try {
     //console.log(authStore.id)
     response = await axios.post(api("profile/") + authStore.id, bodyFormData, {
